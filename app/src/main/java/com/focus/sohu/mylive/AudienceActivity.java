@@ -39,7 +39,7 @@ public class AudienceActivity extends Activity {
         mPlayerView_little = (TXCloudVideoView) findViewById(R.id.video_audience_little);
         mLivePlayer_little = new TXLivePlayer(this);
         mLivePlayer_little.enableHardwareDecode(true);     // 硬件解码
-        mLivePlayer.setPlayerView(mPlayerView_little);
+        mLivePlayer_little.setPlayerView(mPlayerView_little);
         //初始化大主播播放画面
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_audience_main);
         mLivePlayer = new TXLivePlayer(this);

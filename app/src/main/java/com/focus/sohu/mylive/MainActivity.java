@@ -24,7 +24,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         main.setOnClickListener(this);
         little.setOnClickListener(this);
         audience.setOnClickListener(this);
-
     }
 
     @Override
@@ -32,15 +31,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         int id=v.getId();
         switch(id){
             case R.id.btn_main:
-                Intent intent1=new Intent(this,MainActivity.class);
+                Intent intent1=new Intent(this,MainPushActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.btn_little:
-                Intent intent2=new Intent(this,MainActivity.class);
+                Intent intent2=new Intent(this,LittlePushActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.btn_audience:
-                Intent intent3=new Intent(this,MainActivity.class);
+                Intent intent3=new Intent(this,AudienceActivity.class);
                 startActivity(intent3);
                 break;
         }
