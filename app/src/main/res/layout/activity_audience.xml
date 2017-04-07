@@ -5,21 +5,17 @@
         android:id="@+id/video_audience_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true">
+        <Button
+            android:id="@+id/btn_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请求连麦" />
+    </com.tencent.rtmp.ui.TXCloudVideoView>
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:id="@+id/video_audience_little"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_width="128dp"
-        android:layout_height="192dp"
-        android:visibility="gone"/>
-    <Button
-        android:id="@+id/btn_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/video_audience_main"
-        android:layout_toEndOf="@+id/video_audience_main"
-        android:layout_toRightOf="@+id/video_audience_main"
-        android:text="请求连麦" />
+        android:layout_height="192dp" />
 </RelativeLayout>

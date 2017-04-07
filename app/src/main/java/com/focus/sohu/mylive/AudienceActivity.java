@@ -24,7 +24,7 @@ public class AudienceActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainpush);
+        setContentView(R.layout.activity_audience);
         init();
         startWatch();
     }
@@ -46,8 +46,8 @@ public class AudienceActivity extends Activity {
         mLivePlayer.enableHardwareDecode(true);     // 硬件解码
         mLivePlayer.setPlayerView(mPlayerView);
 
-        Button btn= (Button) findViewById(R.id.btn_request);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btn_request= (Button) findViewById(R.id.btn_request);
+        btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(AudienceActivity.this,LittlePushActivity.class);
@@ -58,9 +58,9 @@ public class AudienceActivity extends Activity {
     }
     //开始播放
     public void startWatch(){
-        String flvUrl = "http://2157.liveplay.myqcloud.com/live/2157_xxxx.flv";  //大主播的推流地址
+        String flvUrl = "http://5072.livepush.myqcloud.com/live/5072_test11658.flv";  //大主播的推流地址
         mLivePlayer.startPlay(flvUrl,TXLivePlayer.PLAY_TYPE_LIVE_FLV);
-        String flvUrl_little = "http://2157.liveplay.myqcloud.com/live/2157_xxxx.flv";  //小主播的推流地址
+        String flvUrl_little = "http://5072.livepush.myqcloud.com/live/5073_test11658.flv";  //小主播的推流地址
         mLivePlayer.startPlay(flvUrl_little, TXLivePlayer.PLAY_TYPE_LIVE_FLV);
     }
     //停止播放和推流

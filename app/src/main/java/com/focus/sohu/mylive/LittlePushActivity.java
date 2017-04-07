@@ -49,7 +49,7 @@ public class LittlePushActivity extends Activity {
         mLivePushConfig.setAudioChannels(1); // 单声道
         mLivePushConfig.setHardwareAcceleration(true);
         mLivePusher.setConfig(mLivePushConfig);
-        //初始化播放器（小主播画面）
+        //初始化播放器（大主播画面）
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
         mLivePlayConfig=new TXLivePlayConfig();
         mLivePlayConfig.enableAEC(true);                // 开启回音消除
@@ -63,14 +63,14 @@ public class LittlePushActivity extends Activity {
     }
     //小主播画面推流和预览开始
     public void startPush(){
-        String rtmpPushUrl = "rtmp://2157.livepush.myqcloud.com/live/xxxxxx";  //小主播的推流地址
+        String rtmpPushUrl = "rtmp://5072.livepush.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1";  //小主播的推流地址
         mLivePusher.startPusher(rtmpPushUrl);
         mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePusher.startCameraPreview(mCaptureView);
     }
     //大主播画面开始播放
     public void startWatch(){
-        String flvUrl = "http://2157.liveplay.myqcloud.com/live/2157_xxxx.flv";  //大主播的推流地址
+        String flvUrl = "rtmp://5072.livepush.myqcloud.com/live/5072_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //大主播的推流地址
         mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC);
     }
     //停止播放和推流

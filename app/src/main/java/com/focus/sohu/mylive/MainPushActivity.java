@@ -2,6 +2,8 @@ package com.focus.sohu.mylive;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.TXLivePushConfig;
@@ -29,6 +31,7 @@ public class MainPushActivity extends Activity {
         init();
         startPush();
         startWatch();
+
     }
 
     @Override
@@ -62,14 +65,14 @@ public class MainPushActivity extends Activity {
     }
     //大主播画面推流和预览开始
     public void startPush(){
-        String rtmpPushUrl = "rtmp://2157.livepush.myqcloud.com/live/xxxxxx"; //这里需要填入大主播的推流地址
+        String rtmpPushUrl = "rtmp://5072.livepush.myqcloud.com/live/5072_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1"; //这里需要填入大主播的推流地址
         mLivePusher.startPusher(rtmpPushUrl);
         mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePusher.startCameraPreview(mCaptureView);
     }
     //小主播画面开始播放
     public void startWatch(){
-        String flvUrl = "http://2157.liveplay.myqcloud.com/live/2157_xxxx.flv";  //这里需要填入小主播的推流地址
+        String flvUrl = "rtmp://5072.livepush.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
         mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC); //低延时链路播放
     }
     //停止播放和推流
