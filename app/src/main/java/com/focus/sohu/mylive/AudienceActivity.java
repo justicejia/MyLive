@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
@@ -58,10 +57,10 @@ public class AudienceActivity extends Activity {
     }
     //开始播放
     public void startWatch(){
-        String flvUrl = "http://5072.livepush.myqcloud.com/live/5072_test11658.flv";  //大主播的推流地址
+        String flvUrl = "http://5072.liveplay.myqcloud.com/live/5072_test11658.flv";  //大主播的推流地址
         mLivePlayer.startPlay(flvUrl,TXLivePlayer.PLAY_TYPE_LIVE_FLV);
-        String flvUrl_little = "http://5072.livepush.myqcloud.com/live/5073_test11658.flv";  //小主播的推流地址
-        mLivePlayer.startPlay(flvUrl_little, TXLivePlayer.PLAY_TYPE_LIVE_FLV);
+        String flvUrl_little = "http://5072.liveplay.myqcloud.com/live/5073_test11658.flv";  //小主播的推流地址
+        mLivePlayer_little.startPlay(flvUrl_little, TXLivePlayer.PLAY_TYPE_LIVE_FLV);
     }
     //停止播放和推流
     public void stopRtmp() {

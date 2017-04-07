@@ -72,7 +72,7 @@ public class MainPushActivity extends Activity {
     }
     //小主播画面开始播放
     public void startWatch(){
-        String flvUrl = "rtmp://5072.livepush.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
+        String flvUrl = "rtmp://5072.liveplay.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
         mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC); //低延时链路播放
     }
     //停止播放和推流

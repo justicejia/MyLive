@@ -70,7 +70,7 @@ public class LittlePushActivity extends Activity {
     }
     //大主播画面开始播放
     public void startWatch(){
-        String flvUrl = "rtmp://5072.livepush.myqcloud.com/live/5072_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //大主播的推流地址
+        String flvUrl = "rtmp://5072.liveplay.myqcloud.com/live/5072_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //大主播的推流地址
         mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC);
     }
     //停止播放和推流
@@ -78,7 +78,6 @@ public class LittlePushActivity extends Activity {
         mLivePusher.stopCameraPreview(true); //停止摄像头预览
         mLivePusher.stopPusher();            //停止推流
         mLivePusher.setPushListener(null);   //解绑 listener
-
         mLivePlayer.stopPlay(true); // true代表清除最后一帧画面
         mPlayerView.onDestroy();
     }
