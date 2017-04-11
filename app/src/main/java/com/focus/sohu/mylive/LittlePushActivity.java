@@ -38,7 +38,7 @@ public class LittlePushActivity extends Activity {
         stopRtmp();
     }
     public void init(){
-        //初始化推流预览
+        //小主播推流和预览初始化
         mLivePusher = new TXLivePusher(this);
         mLivePushConfig = new TXLivePushConfig();
         mLivePushConfig.enableAEC(true);
@@ -49,7 +49,7 @@ public class LittlePushActivity extends Activity {
         mLivePushConfig.setAudioChannels(1); // 单声道
         mLivePushConfig.setHardwareAcceleration(true);
         mLivePusher.setConfig(mLivePushConfig);
-        //初始化播放器（大主播画面）
+        //大主播画面播放初始化
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
         mLivePlayConfig=new TXLivePlayConfig();
         mLivePlayConfig.enableAEC(true);                // 开启回音消除
@@ -63,7 +63,7 @@ public class LittlePushActivity extends Activity {
     }
     //小主播画面推流和预览开始
     public void startPush(){
-        String rtmpPushUrl = "rtmp://5072.livepush.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1";  //小主播的推流地址
+        String rtmpPushUrl = "rtmp://5073.livepush.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1";  //小主播的推流地址
         mLivePusher.startPusher(rtmpPushUrl);
         mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePusher.startCameraPreview(mCaptureView);

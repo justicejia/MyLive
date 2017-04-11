@@ -43,6 +43,7 @@ public class MainPushActivity extends Activity {
         //初始化推流预览
         mLivePusher = new TXLivePusher(this);
         mLivePushConfig = new TXLivePushConfig();
+        mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePushConfig.enableAEC(true);
         mLivePushConfig.setHardwareAcceleration(true);
         mLivePushConfig.setVideoResolution(VIDEO_RESOLUTION_360_640); // 秀场直播最流行的分辨率
@@ -52,7 +53,6 @@ public class MainPushActivity extends Activity {
         mLivePushConfig.setHardwareAcceleration(true);
         mLivePusher.setConfig(mLivePushConfig);
         //初始化播放器（小主播画面）
-        mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
         mLivePlayConfig=new TXLivePlayConfig();
         mLivePlayConfig.enableAEC(true);                // 开启回音消除
         mLivePlayConfig.setAutoAdjustCacheTime(true);   // 极速模式 - 有明显的延迟修正表现
@@ -61,18 +61,18 @@ public class MainPushActivity extends Activity {
         mLivePlayer = new TXLivePlayer(this);
         mLivePlayer.setConfig(mLivePlayConfig);
         mLivePlayer.enableHardwareDecode(true);     // 硬件解码
+        mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
         mLivePlayer.setPlayerView(mPlayerView);
     }
     //大主播画面推流和预览开始
     public void startPush(){
         String rtmpPushUrl = "rtmp://5072.livepush.myqcloud.com/live/5072_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1"; //这里需要填入大主播的推流地址
         mLivePusher.startPusher(rtmpPushUrl);
-        mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePusher.startCameraPreview(mCaptureView);
     }
     //小主播画面开始播放
     public void startWatch(){
-        String flvUrl = "rtmp://5072.liveplay.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
+        String flvUrl = "rtmp://5073.liveplay.myqcloud.com/live/5073_test11658?txSecret=4a4a63d2965f232242bb64581796a7c6&txTime=697C6E15&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
         mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC); //低延时链路播放
     }
     //停止播放和推流
