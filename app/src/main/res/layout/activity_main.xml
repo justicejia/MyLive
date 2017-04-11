@@ -20,4 +20,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="我是普通观众" />
+
+    <TextView
+        android:id="@+id/url_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="大主播推流URL" />
+
+    <EditText
+        android:id="@+id/edit_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/url_little"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="小主播推流URL" />
+
+    <EditText
+        android:id="@+id/edit_little"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
 </LinearLayout>
