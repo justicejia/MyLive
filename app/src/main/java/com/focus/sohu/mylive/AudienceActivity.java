@@ -47,13 +47,13 @@ public class AudienceActivity extends Activity {
         mPlayerView_little = (TXCloudVideoView) findViewById(R.id.video_audience_little);
         mLivePlayer_little = new TXLivePlayer(this);
         mLivePlayer_little.setConfig(mPlayConfig);
-        mLivePlayer_little.enableHardwareDecode(true);     // 硬件解码
+        mLivePlayer_little.enableHardwareDecode(true);
         mLivePlayer_little.setPlayerView(mPlayerView_little);
         //初始化大主播播放画面
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_audience_main);
         mLivePlayer = new TXLivePlayer(this);
         mLivePlayer.setConfig(mPlayConfig);
-        mLivePlayer.enableHardwareDecode(true);     // 硬件解码
+        mLivePlayer.enableHardwareDecode(true);
         mLivePlayer.setPlayerView(mPlayerView);
 
         Button btn_request= (Button) findViewById(R.id.btn_request);
@@ -73,14 +73,13 @@ public class AudienceActivity extends Activity {
         Log.d("test","url_little: "+url_little);
         Log.d("test","url_main: "+url_main);
         mLivePlayer.startPlay(url_main,TXLivePlayer.PLAY_TYPE_VOD_HLS);
-//        String flvUrl_little = "http://5073.liveplay.myqcloud.com/live/5073_test11685.m3u8";  //小主播的推流地址
         mLivePlayer_little.startPlay(url_little, TXLivePlayer.PLAY_TYPE_VOD_HLS);
     }
     //停止播放和推流
     public void stopRtmp() {
-        mLivePlayer.stopPlay(true); // true代表清除最后一帧画面
+        mLivePlayer.stopPlay(true);
         mPlayerView.onDestroy();
-        mLivePlayer_little.stopPlay(true); // true代表清除最后一帧画面
+        mLivePlayer_little.stopPlay(true);
         mPlayerView_little.onDestroy();
     }
 }

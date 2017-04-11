@@ -63,15 +63,15 @@ public class LittlePushActivity extends Activity {
     }
     //小主播画面推流和预览开始
     public void startPush(){
-        String rtmpPushUrl = "rtmp://5073.livepush.myqcloud.com/live/5073_test11685?txSecret=d8e451247f3702ea2b8edd674461bff7&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1";  //小主播的推流地址
-        mLivePusher.startPusher(rtmpPushUrl);
+        String url_little=getIntent().getExtras().getString("little");
+        mLivePusher.startPusher(url_little);
         mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
         mLivePusher.startCameraPreview(mCaptureView);
     }
     //大主播画面开始播放
     public void startWatch(){
-        String flvUrl = "rtmp://5072.livepush.myqcloud.com/live/5072_test11685?txSecret=d8e451247f3702ea2b8edd674461bff7&txTime=697C6E15&record=hls&record=hls&session_id=1000";  //大主播的推流地址
-        mLivePlayer.startPlay(flvUrl, PLAY_TYPE_LIVE_RTMP_ACC);
+        String url_main=getIntent().getExtras().getString("main");
+        mLivePlayer.startPlay(url_main, PLAY_TYPE_LIVE_RTMP_ACC);
     }
     //停止播放和推流
     public void stopRtmp() {

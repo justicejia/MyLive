@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyLive</string>
+    <string name="url_lianmai">&amp;mix=layer:s;session_id:1000;t_id:1</string>
 </resources>
