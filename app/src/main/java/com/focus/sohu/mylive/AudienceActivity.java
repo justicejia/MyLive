@@ -56,15 +56,16 @@ public class AudienceActivity extends Activity {
         mLivePlayer.enableHardwareDecode(true);
         mLivePlayer.setPlayerView(mPlayerView);
 
-        Button btn_request= (Button) findViewById(R.id.btn_request);
-        btn_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(AudienceActivity.this,LittlePushActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        Button btn_request= (Button) findViewById(R.id.btn_request);
+//        btn_request.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(AudienceActivity.this,LittlePushActivity.class);
+////                intent.putExtra("")
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
     //开始播放
     public void startWatch(){

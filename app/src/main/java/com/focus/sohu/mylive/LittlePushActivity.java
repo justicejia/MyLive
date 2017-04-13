@@ -2,7 +2,8 @@ package com.focus.sohu.mylive;
 
 import android.app.Activity;
 import android.os.Bundle;
-
+import android.util.Log;
+import android.view.View;
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.TXLivePushConfig;
@@ -26,10 +27,15 @@ public class LittlePushActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainpush);
+        setContentView(R.layout.littlepush);
+        findViewById(R.id.btn_link_little).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startWatch();
+            }
+        });
         init();
         startPush();
-        startWatch();
     }
 
     @Override
@@ -50,7 +56,7 @@ public class LittlePushActivity extends Activity {
         mLivePushConfig.setHardwareAcceleration(true);
         mLivePusher.setConfig(mLivePushConfig);
         //大主播画面播放初始化
-        mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
+        mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little_little);
         mLivePlayConfig=new TXLivePlayConfig();
         mLivePlayConfig.enableAEC(true);                // 开启回音消除
         mLivePlayConfig.setAutoAdjustCacheTime(true);   // 极速模式 - 有明显的延迟修正表现
@@ -61,24 +67,27 @@ public class LittlePushActivity extends Activity {
         mLivePlayer.enableHardwareDecode(true);     // 硬件解码
         mLivePlayer.setPlayerView(mPlayerView);
     }
-    //小主播画面推流和预览开始
+    //小主播画面推流和预览
     public void startPush(){
-        String url_little=getIntent().getExtras().getString("little");
+        String url_little=getIntent().getExtras().getString("little")+"&mix=layer:s;session_id:1111;t_id:1";
+        Log.d("test","little_push: "+url_little);
         mLivePusher.startPusher(url_little);
-        mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main);
+        mCaptureView = (TXCloudVideoView) findViewById(R.id.video_main_little);
         mLivePusher.startCameraPreview(mCaptureView);
     }
-    //大主播画面开始播放
+    //大主播画面播放
     public void startWatch(){
-        String url_main=getIntent().getExtras().getString("main");
-        mLivePlayer.startPlay(url_main, PLAY_TYPE_LIVE_RTMP_ACC);
+        String url_main=getIntent().getExtras().getString("main").replaceAll("push","play")+"&session_id=2222";
+        String url_main_play=new StringBuilder(url_main).insert(url_main.indexOf('?')+1,"bizid=5072&").toString();
+        Log.d("test","main_play: "+url_main_play);
+        mLivePlayer.startPlay(url_main_play, PLAY_TYPE_LIVE_RTMP_ACC);
     }
     //停止播放和推流
     public void stopRtmp() {
-        mLivePusher.stopCameraPreview(true); //停止摄像头预览
-        mLivePusher.stopPusher();            //停止推流
-        mLivePusher.setPushListener(null);   //解绑 listener
-        mLivePlayer.stopPlay(true); // true代表清除最后一帧画面
+        mLivePusher.stopCameraPreview(true);
+        mLivePusher.stopPusher();
+        mLivePusher.setPushListener(null);
+        mLivePlayer.stopPlay(true);
         mPlayerView.onDestroy();
     }
 }

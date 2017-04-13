@@ -25,26 +25,24 @@
         android:id="@+id/url_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="请输入大主播的推流URL" />
+        android:text="大主播推流URL(不加连麦参数)" />
 
     <EditText
         android:id="@+id/edit_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/url_lianmai" />
+        android:inputType="textPersonName" />
     <TextView
         android:id="@+id/url_little"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="请输入小主播的推流URL" />
+        android:text="小主播推流URL(不加连麦参数)" />
 
     <EditText
         android:id="@+id/edit_little"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/url_lianmai" />
+        android:inputType="textPersonName" />
 </LinearLayout>

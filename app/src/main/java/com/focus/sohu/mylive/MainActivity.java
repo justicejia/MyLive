@@ -18,7 +18,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
@@ -68,9 +67,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     //根据推流地址计算出观众端播放地址
     private String cal_url(String url){
-        String s1=url.substring(7,11);
-        String s2=url.substring(url.indexOf("test")+4,url.indexOf("test")+9);
-        return "http://"+s1+".liveplay.myqcloud.com/live/"+s1+"_test"+s2+".m3u8";
+        String s=url.substring(url.indexOf('?')-5,url.indexOf('?'));
+        return "http://5072.liveplay.myqcloud.com/live/5072_test"+s+".flv";
 
     }
 }

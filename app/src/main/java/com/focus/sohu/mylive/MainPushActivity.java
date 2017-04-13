@@ -3,6 +3,8 @@ package com.focus.sohu.mylive;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
@@ -28,10 +30,14 @@ public class MainPushActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpush);
+        findViewById(R.id.btn_link).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startWatch();
+            }
+        });
         init();
         startPush();
-        startWatch();
-
     }
 
     @Override
@@ -64,23 +70,19 @@ public class MainPushActivity extends Activity {
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_little);
         mLivePlayer.setPlayerView(mPlayerView);
     }
-    //大主播画面推流和预览开始
+    //大主播画面推流和预览
     public void startPush(){
-        String url_main=getIntent().getExtras().get("main").toString();
-        if(url_main==""){
-            url_main = "rtmp://5072.livepush.myqcloud.com/live/5072_test11685?txSecret=d8e451247f3702ea2b8edd674461bff7&txTime=697C6E15&record=hls&mix=layer:s;session_id:1000;t_id:1"; //这里需要填入大主播的推流地址
-        }
+        String url_main=getIntent().getExtras().get("main").toString()+"&mix=layer:s;session_id:2222;t_id:1";
+        Log.d("test","main_push: "+url_main);
         mLivePusher.startPusher(url_main);
-        Log.d("test",url_main);
         mLivePusher.startCameraPreview(mCaptureView);
     }
-    //小主播画面开始播放
+    //小主播画面播放
     public void startWatch(){
-        String url_little=getIntent().getExtras().getString("littel");
-        if(url_little==""){
-            url_little = "rtmp://5073.liveplay.myqcloud.com/live/5073_test11685?txSecret=d8e451247f3702ea2b8edd674461bff7&txTime=697C6E15&record=hls&record=hls&record=hls&session_id=1000";  //这里需要填入小主播的推流地址
-        }
-        mLivePlayer.startPlay(url_little, PLAY_TYPE_LIVE_RTMP_ACC); //低延时链路播放
+        String url_little=getIntent().getExtras().getString("little").replaceAll("push","play")+"&session_id=1111";
+        String url_little_play=new StringBuilder(url_little).insert(url_little.indexOf('?')+1,"bizid=5072&").toString();
+        Log.d("test","little_play: "+url_little_play);
+        mLivePlayer.startPlay(url_little_play, PLAY_TYPE_LIVE_RTMP_ACC); //低延时链路播放
     }
     //停止播放和推流
     public void stopRtmp() {
